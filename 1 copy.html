@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đình Thông Tây Hội — Timeline</title>
+
+  <!-- Font + Anime.js -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    :root {
+      --accent: #008080;
+      --white: #ffffff;
+      --overlay-alpha: 0.8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+    }
+    .gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--white));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* fallback */
+}
+
+
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: url('assets/Thongtayhoitemple2.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 40%;
+      padding-right: 5vw;
+      text-align: right;
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
+
+    .title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      z-index: 2;
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      opacity: 0.95;
+      margin-bottom: 0.6rem;
+    }
+
+    .rule {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), rgba(255,255,255,0.2));
+      margin-left: auto;
+      margin-bottom: 0.6rem;
+      border-radius: 2px;
+    }
+
+    .tagline {
+      color: var(--white);
+      font-size: clamp(0.8rem, 1vw, 1rem);
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== TIMELINE SECTION ========== */
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 60px 40px;
+      align-items: center;
+      background-color: #000;
+      color: #000;
+    }
+    .sidebar {
+      transform: rotate(90deg);
+      font-size: 96px;
+      font-weight: bold;
+      color: var(--accent);
+      white-space: nowrap;
+      margin-right: -10%;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-grow: 1;
+      margin-left: 80px;
+    }
+
+    .event {
+      position: relative;
+      background-color: white;
+      padding: 20px 24px;
+      overflow: hidden;
+      cursor: pointer;
+      color: #000;
+      min-height: 80px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .event-date {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .event-desc {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    /* Thêm vào CSS của bạn */
+.parallelogram-bg {
+  position: fixed;          /* cố định theo viewport */
+  top: 0;
+  right: 0;
+  width: 25vw;              /* chiều rộng vùng bình hành (tùy chỉnh 20–30vw) */
+  height: 100vh;            /* cao toàn màn hình */
+  background-color: #222222;
+  transform: skewX(-40deg); /* nghiêng tạo hình bình hành */
+  transform-origin: top right;
+  z-index: 0;               /* nằm dưới hero content, có thể điều chỉnh */
+}
+
+
+
+.paragraph-container {
+  margin-left: 100px; /* khoảng cách rõ ràng sau tiêu đề */
+  margin-right: 40%;
+  z-index: 1;
+  position: relative;
+}
+
+.paragraph {
+  font-size: 18px;
+  line-height: 1.8;
+  color: white;
+  
+}
+
+.tq {
+    margin-left: 40px;
+    z-index: 1;
+    position: relative;
+}
+
+.midbar {
+  font-size: 96px;
+  font-weight: bold;
+  color: var(--accent);
+  white-space: nowrap;
+  text-align: center;
+  margin: 0 auto; /* giữa ngang */
+  
+}
+    .skew-overlay {
+      position: absolute;
+      top: 0;
+      left: -20%;
+      height: 100%;
+      width: 0%;
+      background-color: var(--accent);
+      transform: skewX(-20deg);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .event-content {
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s ease;
+    }
+
+
+.flashcard-section {
+  padding: 80px 5vw;
+  background-color: #000;
+  text-align: center;
+}
+
+.flashcard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.flashcard {
+  width: 300px;
+  height: 420px;
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard:hover .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+/* Mặt trước */
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Neon border nhẹ ở rìa trong */
+.neon-border {
+  position: absolute;
+  inset: 8px;
+  border: 2px solid var(--accent);
+  border-radius: 14px;
+  filter: drop-shadow(0 0 12px var(--accent));
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.flashcard-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.6s ease;
+}
+
+.flashcard:hover .flashcard-front img {
+  filter: blur(2px) brightness(0.8);
+}
+.flashcard:hover .neon-border {
+  opacity: 1;
+}
+
+/* Mặt sau */
+.flashcard-back {
+  background: linear-gradient(160deg, #2a2a2a, #000);
+  transform: rotateY(180deg);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.flashcard-emoji {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.flashcard-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.flashcard-info p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flashcard { width: 90%; height: 360px; }
+}
+
+
+
+.tour-section {
+  position: relative;
+  background-color: #000;
+  padding: 100px 10vw 140px;
+  overflow: hidden;
+}
+
+.tour-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.tour-item {
+  opacity: 0;
+  transform: translateY(50px);
+  background: rgba(255,255,255,0.05);
+  border-left: 4px solid var(--accent);
+  padding: 30px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.tour-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 1rem;
+}
+
+.tour-subtitle {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.tour-item p {
+  color: #ddd;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Hiệu ứng xuất hiện */
+.tour-item.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Đảm bảo không bị cắt phần cuối */
+body::after {
+  content: "";
+  display: block;
+  height: 100px;
+}
+
+
+#pageTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#pageTopBtn img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(1) drop-shadow(0 0 6px var(--accent));
+}
+
+/* Hover effect */
+#pageTopBtn:hover img {
+  transform: translateY(-5px) scale(1.05);
+  filter: brightness(1.4) drop-shadow(0 0 10px var(--accent));
+}
+
+/* Hiện nút khi cuộn xuống */
+#pageTopBtn.show {
+  opacity: 1;
+}
+
+
+
+.credit-section {
+  background: #000;
+  padding: 80px 10vw 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.credit-content {
+  opacity: 0;
+  transform: translateY(40px);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.credit-content.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.credit-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 1.4rem;
+}
+
+.credit-list {
+  text-align: left;
+  color: #ddd;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.credit-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(255,255,255,0.3));
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.credit-footer {
+  font-size: 0.85rem;
+  color: #aaa;
+  letter-spacing: 0.5px;
+}
+
+.heart {
+  color: var(--accent);
+}
+
+
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(0,0,0,0.35);
+  transition: background 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.nav-logo {
+  height: 64px;
+  width: auto;
+  margin-right: 40px;
+}
+
+.nav-item {
+  position: relative;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 16px;
+  font-size: 36px;
+}
+
+/* dropdown gắn liền sát phần tử cha */
+.dropdown {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 4px); /* thêm 4px đệm nhỏ để không bị chạm */
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 20px 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  min-width: 460px;
+  box-shadow: 0 0 10px rgba(0,128,128,0.3);
+  backdrop-filter: blur(8px);
+}
+
+/* Hover giữ menu luôn mở */
+.nav-item:hover .dropdown {
+  opacity: 10;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* style các mục trong dropdown */
+.dropdown li {
+  padding: 10px 20px;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.dropdown li:hover {
+  background: var(--accent);
+  color: black;
+}
+.nav-item::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 15px; /* vùng đệm vô hình */
+  background: transparent;
+}
+
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #000; /* hoặc màu khác nếu muốn */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #000;
+  transition: width 0.4s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content { width: 80%; text-align: center; padding: 0 5vw; }
+      .rule { margin: 0.6rem auto; }
+      .container { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
+      .sidebar { transform: none; font-size: 48px; margin: 0 0 20px 0; text-align: center; width: 100%; }
+      .timeline { margin-left: 0; }
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <a href="#" class="logo-link"><img src="assets/1-trang.png" class="nav-logo" alt="logo"></a>
+  <div class="nav-item title">
+    Mục
+    <ul class="dropdown">
+      <li><a href="#lichsu">Lịch sử</a></li>
+      <li><a href="#kientruc">Kiến Trúc</a></li>
+      <li><a href="#vanhoa">Văn Hóa</a></li>
+      <li><a href="#baoton">Định hướng bảo tồn & phát triển</a></li>
+      <li><a href="#flashcard-section">Di sản trong hình ảnh</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    
+    <div class="hero-content">
+      <h1 class="title gradient-text" >Đình Thông Tây Hội</h1>
+      <div class="subtitle gradient-text">ngôi đền cổ nhất sài gòn</div>
+      <div class="rule"></div>
+      <div class="tagline">Di sản sống giữa lòng phương Nam nhỏ nhất</div>
+    </div>
+    
+  </section>
+    
+  <div class="parallelogram-bg"></div>
+  <div class="title gradient-text tq ">Tổng Quan</div>
+    <div class="paragraph-container">
+        
+    <div class="paragraph">
+      Đình Thông Tây Hội là ngôi đình cổ nhất miền Nam, được dựng từ năm 1679 bởi cư dân Thuận Quảng vào Nam khai hoang    </div>
+    <div class="paragraph">
+      Nằm tại số 11 Thống Nhất, phường 11, quận Gò Vấp, TP.HCM, đình là trung tâm tín ngưỡng và sinh hoạt cộng đồng suốt hơn 300 năm.
+    </div>
+    <div class="paragraph">
+      Năm 1998, nơi đây được công nhận là Di tích kiến trúc nghệ thuật cấp quốc gia, trở thành biểu tượng văn hóa – lịch sử đặc sắc của vùng đất Gia Định – Sài Gòn.
+    </div>
+  </div>
+  <!-- TIMELINE SECTION -->
+  <div class="container" id="lichsu">
+    <div class="title sidebar gradient-text">LỊCH SỬ</div>
+    <div class="timeline">
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">1679</div>
+          <div class="event-desc">Đình được dựng bởi những cư dân đầu tiên từ vùng Thuận Quảng (Quảng Bình – Thừa Thiên Huế) vào Nam khai hoang.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">1698</div>
+          <div class="event-desc">Làng Hanh Thông – nơi đình tọa lạc – được thành lập, là một trong những làng cổ nhất vùng Gia Định.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Trước 1944</div>
+          <div class="event-desc">Đình có tên là Đình Hanh Thông Tây hoặc Hạnh Thông Tây, là trung tâm sinh hoạt văn hóa – tín ngưỡng của cư dân địa phương.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">1944</div>
+          <div class="event-desc">Hai làng Hanh Thông Tây và An Hội sáp nhập, đình được đổi tên thành Đình Thông Tây Hội – tên gọi hiện nay.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">1998</div>
+          <div class="event-desc">Đình được công nhận là Di tích kiến trúc nghệ thuật cấp quốc gia nhân dịp kỷ niệm 300 năm Sài Gòn – Gia Định.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Thế kỷ 20 – nay</div>
+          <div class="event-desc">Đình trở thành nơi tổ chức lễ hội truyền thống, lễ cúng kỳ yên và là điểm nghiên cứu văn hóa dân gian phương Nam.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="kientruc">
+    
+    <div class="timeline">
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Chất liệu xây dựng:</div>
+          <div class="event-desc">Ban đầu dựng bằng tre lá, đến năm 1883 được xây lại bằng gỗ quý và ngói, giữ nguyên phong cách kiến trúc truyền thống Nam Bộ.</div>
+            </div>
+            </div>
+    <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Các công trình phụ:</div>
+          <div class="event-desc"> Miếu Bà Chúa Xứ, bàn thờ Thần Nông, bia Ông Hổ, miếu Ngũ Hành – tạo thành cụm kiến trúc phong phú trong khuôn viên đình.</div>
+            </div>
+            </div>
+        <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Khuôn viên:</div>
+          <h1 class="event-desc">Rộng khoảng 1.500 m² (ban đầu khu đất rộng khoảng 5 188 m²), quay hướng Đông, bố cục theo trục chính gồm:</h1>
+          <div class="event-desc">Cổng tam quan: lối vào chính, mang tính biểu tượng - cao khoảng 5m, rộng 6m, ba cửa, mái ngói âm dương, trang trí rồng phượng.</div>
+          <div class="event-desc">Võ ca: nơi diễn xướng, hát bội trong các dịp lễ hội - ngang 14 m, sâu 17,5 m, cao 4 m là nơi xây chầu, hát bội gồm 7 nếp nhà và 52 cột gỗ, không có tường bao xung quanh</div>
+          <div class="event-desc">Chánh điện: trung tâm thờ tự, trang trí công phu - 2 nếp nhà ghép trùng nhau, tổng cộng 48 cột chia thành 8 dãy, mỗi dãy 6 cột; 4 cột giữa cao 4,5 m, đường kính 30 cm</div>
+          <div class="event-desc">Nhà hội sở: nơi hội họp, sinh hoạt cộng đồng - ngang 12 m, dài 19 m, cao 4,2 m; có 56 cột, chân cột kê đá xanh, có 3 nếp nhà "trùng thiềm điệp ốc"</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Phong cách kiến trúc:</div>
+          <div class="event-desc">Giữ nguyên đình làng Nam Bộ thế kỷ 19.</div>
+          <div class="event-desc">Mái ngói âm dương: tạo sự thông thoáng, điều hòa nhiệt độ.</div>
+          <div class="event-desc">Cột gỗ chạm khắc tinh xảo: hoa văn rồng, phượng, hoa lá, thể hiện tay nghề nghệ nhân xưa.</div>
+          <div class="event-desc">Kèo, cột, vì kèo liên kết chắc chắn, phản ánh kỹ thuật mộc truyền thống.</div>
+        </div>
+      </div>
+    </div>
+    <div class="title sidebar gradient-text">Kiến   Trúc</div>
+  </div>
+  <div class="event-content">
+  <div class="title midbar gradient-text">Văn Hóa</div>
+</div>
+  <div class="container " id="vanhoa">
+    
+    <div class="timeline">
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Lễ hội Kỳ Yên:</div>
+          <div class="event-desc">Diễn ra hằng năm vào tháng 2 âm lịch, kéo dài 2–3 ngày. Bao gồm nghi thức rước sắc thần, cúng tế, dâng lễ vật theo sản vật địa phương. Song song là các hoạt động nghệ thuật dân gian: hát bội, múa lân, múa rồng, tạo không khí lễ hội sôi động, thu hút đông đảo người dân và du khách.</div>
+            </div>
+            </div>
+        <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Không gian cộng đồng – giáo dục::</div>
+          <div class="event-desc">Đình là nơi hội họp, bàn việc làng, tiếp nhận di dân, gắn kết cộng đồng. Đây cũng là nơi lưu giữ ký ức tập thể, truyền thống “uống nước nhớ nguồn”. Năm 2024, đình được bổ sung Không gian văn hóa Hồ Chí Minh, trở thành điểm giáo dục truyền thống và sinh hoạt văn hóa hiện đại.</div>
+        </div>
+      </div>
+      <div class="event" onmouseenter="expand(this)" onmouseleave="collapse(this)">
+        <div class="skew-overlay"></div>
+        <div class="event-content">
+          <div class="event-date">Tín ngưỡng thờ tự:</div>
+          <div class="event-desc">Đình thờ Thành Hoàng làng, cụ thể là hai vị thần Đông Chinh Vương và Dực Thánh Vương, hoàng tử con vua Lý Thái Tổ. Người dân tin rằng các vị thần bảo hộ cư dân khỏi thiên tai, thú dữ, giúp mùa màng tươi tốt, con cháu an lành.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- PHÁT TRIỂN & BẢO TỒN SECTION -->
+<section class="tour-section" id="baoton">
+  <div class="title midbar gradient-text">ĐỊNH HƯỚNG BẢO TỒN </div>
+  <div class="title midbar gradient-text">& PHÁT TRIỂN</div>
+
+  <div class="tour-timeline">
+    <!-- 1️⃣ Bảo tồn Di tích -->
+    <div class="tour-item">
+      <h2 class="tour-title gradient-text">1. Bảo tồn Di tích</h2>
+      
+      <h2 class="tour-subtitle">• Bảo tồn kiến trúc</h2>
+      <p>Trùng tu khẩn cấp các khu vực xuống cấp nặng. Sử dụng vật liệu truyền thống như gỗ, ngói âm dương, gốm men xanh và áp dụng kỹ thuật bảo tồn chuyên nghiệp để giữ nguyên giá trị kiến trúc nghệ thuật.</p>
+      <p>Đồng thời, đề xuất giải pháp pháp lý nhằm quản lý và thu hồi diện tích bị xâm lấn, đảm bảo toàn vẹn khuôn viên di tích.</p>
+
+      <h2 class="tour-subtitle">• Bảo tồn phi vật thể</h2>
+      <p>Tư liệu hóa, số hóa các tài liệu Hán Nôm, hiện vật quý (37 hiện vật), cùng các câu chuyện lịch sử liên quan đến đình nhằm lưu giữ những đặc sắc văn hóa.</p>
+    </div>
+
+    <!-- 2️⃣ Phát triển du lịch bền vững -->
+    <div class="tour-item">
+      <h2 class="tour-title gradient-text">2. Phát triển du lịch bền vững</h2>
+
+      <h2 class="tour-subtitle">• Sản phẩm du lịch</h2>
+      <p><strong>Du lịch tâm linh - lịch sử:</strong> Tổ chức các chuyến tham quan có thuyết minh viên chuyên nghiệp kể chuyện về lịch sử khẩn hoang, hai vị thần Đông Chinh Vương và Dực Thánh Vương.</p>
+      <p><strong>Du lịch trải nghiệm:</strong> Tổ chức biểu diễn Hát Bội tại nhà Võ ca vào dịp lễ lớn, kết hợp giới thiệu ẩm thực truyền thống địa phương.</p>
+
+      <h2 class="tour-subtitle">• Cơ sở hạ tầng</h2>
+      <p>Xây dựng khu vực tiếp đón, trưng bày tư liệu và bán đồ lưu niệm phù hợp với không gian di tích.</p>
+      <p>Cải thiện đường đi, bãi đỗ xe và nhà vệ sinh đạt chuẩn.</p>
+
+      <h2 class="tour-subtitle">• Chiến dịch Marketing</h2>
+      <p>Xây dựng tour du lịch <strong>"Gò Vấp: Hành trình 300 năm Dấu ấn Gia Định"</strong>, kết nối Đình Thông Tây Hội với các di tích lân cận như Chùa Hạnh Thông Tây – ngôi chùa cổ có giá trị kiến trúc đặc sắc.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="flashcard-section" id="flashcard-section">
+  <h2 class="title section-title gradient-text">Di Sản Trong Hình Ảnh</h2>
+  <div class="flashcard-grid">
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth2.jpg" alt="Hạc đứng trên lưng rùa">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🦢</div>
+          <div class="flashcard-info">
+            <h3>Hạc đứng trên lưng rùa</h3>
+            <p>Đôi hạc chầu đối xứng, đứng trên lưng rùa trước bàn thờ chính, biểu tượng trường thọ trong đình Thông Tây Hội.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth1.jpg" alt="Rùa và hoa văn vàng">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🐢</div>
+          <div class="flashcard-info">
+            <h3>Rùa và hoa văn vàng</h3>
+            <p>Một bức phù điêu rùa vàng với hoa văn Bát Quái, nằm giữa mây cuộn trong gian thờ chính đình Thông Tây Hội.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth3.jpg" alt="Lưỡng long tranh châu">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🐉</div>
+          <div class="flashcard-info">
+            <h3>Lưỡng long tranh châu</h3>
+            <p>Trên nóc chánh điện, đôi rồng men xanh tranh châu nổi bật, thể hiện nét kiến trúc đình làng Việt Nam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth5.jpg" alt="Đền thờ Bà Chúa Xứ">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">👸</div>
+          <div class="flashcard-info">
+            <h3>Đền thờ Bà Chúa Xứ</h3>
+            <p>Đền thờ Bà Chúa Xứ nằm trong khuôn viên đình Thông Tây Hội, trang nghiêm với mái ngói đỏ và cổng tam quan rồng chầu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth4.jpg" alt="Bia Ông Hổ">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🐯</div>
+          <div class="flashcard-info">
+            <h3>Bia Ông Hổ</h3>
+            <p>Bức vẽ Ông Hổ uy nghi giữa sân đình, biểu tượng linh vật canh giữ và bảo hộ tại đình Thông Tây Hội.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth6.jpg" alt="Điện thờ Ngũ Hành Nương Nương">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🌺</div>
+          <div class="flashcard-info">
+            <h3>Điện thờ Ngũ Hành Nương Nương</h3>
+            <p>Điện thờ Ngũ Hành Nương Nương nằm trong khuôn viên đình Thông Tây Hội, thể hiện tín ngưỡng thờ cúng ngũ hành trong văn hóa dân gian.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth7.jpg" alt="Gian thờ đa thần trong đình cổ">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🏮</div>
+          <div class="flashcard-info">
+            <h3>Gian thờ đa thần trong đình cổ</h3>
+            <p>Một gian thờ trang nghiêm trong đình Thông Tây Hội, nơi tôn vinh Bà Chúa Xứ và các vị thần bảo hộ cộng đồng.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth8.jpg" alt="Mái ngói trùng thiềm điệp ốc">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🏯</div>
+          <div class="flashcard-info">
+            <h3>Mái ngói trùng thiềm điệp ốc</h3>
+            <p>Đình gồm nhiều gian nhà nối liền, mái ngói âm dương xếp lớp san sát theo kiểu “trùng thiềm điệp ốc” đặc trưng đình làng Việt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth9.jpg" alt="Nhà hội sở">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🧧</div>
+          <div class="flashcard-info">
+            <h3>Nhà hội sở</h3>
+            <p>Nhà hội sở nằm trong khuôn viên đình Thông Tây Hội, nơi tổ chức các hoạt động cộng đồng và lễ hội truyền thống.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          
+          <img src="assets/dtth10.jpg" alt="Tượng Bạch Mã Thái Giám">
+        </div>
+        <div class="flashcard-back">
+          <div class="neon-border"></div>
+          <div class="flashcard-emoji">🐴</div>
+          <div class="flashcard-info">
+            <h3>Tượng Bạch Mã Thái Giám</h3>
+            <p>Tượng Bạch Mã đứng uy nghi giữa gian thờ, biểu tượng thần hộ mệnh trong tín ngưỡng dân gian đình Thông Tây Hội.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- PAGE TOP BUTTON -->
+<button id="pageTopBtn" onclick="scrollToTop()">
+  <img src="assets/btn_pagetop.png" alt="Lên đầu trang">
+</button>
+
+
+
+<!-- CREDIT SECTION -->
+<footer class="credit-section">
+  <div class="credit-content">
+    <h2 class="gradient-text">Credit Dự Án</h2>
+    <div class="credit-list">
+      <p><strong>Đề tài:</strong> Bảo tồn và phát huy giá trị Đình Thông Tây Hội – Di sản kiến trúc và văn hóa vùng Nam Bộ</p>
+      <p><strong>Thực hiện bởi:</strong> ...</p>
+      <p><strong>Trường:</strong> Trung Học Phổ Thông Chuyên Trần Đại Nghĩa</p>
+      <p><strong>Năm thực hiện:</strong> 2025</p>
+    </div>
+    <div class="credit-divider"></div>
+    <div class="credit-footer">© 2025 — reMEMORed Project | Designed & Animated with Animejs</div>
+  </div>
+</footer>
+
+
+  <!-- ANIME.JS SCRIPT -->
+  <script>
+
+
+
+// Hiện/ẩn nút khi cuộn
+window.addEventListener("scroll", function() {
+  const btn = document.getElementById("pageTopBtn");
+  if (window.scrollY > 300) {
+    btn.classList.add("show");
+  } else {
+    btn.classList.remove("show");
+  }
+});
+
+// Cuộn lên đầu
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+
+
+
+    document.querySelectorAll('.flashcard').forEach(card => {
+  const img = card.querySelector('.flashcard-front img');
+  const border = card.querySelector('.neon-border');
+
+  card.addEventListener('mouseenter', () => {
+    anime({
+      targets: img,
+      scale: [1, 1.08],
+      filter: ['blur(0px)', 'blur(2px) brightness(0.8)'],
+      duration: 700,
+      easing: 'easeOutCubic'
+    });
+    anime({
+      targets: border,
+      opacity: [0.8, 1],
+      duration: 600,
+      easing: 'easeOutQuad'
+    });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    anime({
+      targets: img,
+      scale: [1.08, 1],
+      filter: ['blur(2px)', 'blur(0px) brightness(1)'],
+      duration: 700,
+      easing: 'easeOutCubic'
+    });
+    anime({
+      targets: border,
+      opacity: [1, 0.8],
+      duration: 600,
+      easing: 'easeOutQuad'
+    });
+  });
+});
+
+// Hiệu ứng xuất hiện phần credit khi cuộn đến
+function animateCredit() {
+  const credit = document.querySelector('.credit-content');
+  if (!credit) return;
+  const rect = credit.getBoundingClientRect();
+  const triggerBottom = window.innerHeight * 0.85;
+
+  if (rect.top < triggerBottom && !credit.classList.contains('animated')) {
+    credit.classList.add('animated');
+    anime({
+      targets: credit,
+      opacity: [0, 1],
+      translateY: [40, 0],
+      duration: 1000,
+      easing: 'easeOutExpo'
+    });
+  }
+}
+window.addEventListener('scroll', animateCredit);
+window.addEventListener('load', animateCredit);
+
+
+    function expand(el) {
+      const overlay = el.querySelector('.skew-overlay');
+      const content = el.querySelector('.event-content');
+      const content2 = el.querySelector('.event-date');
+      anime({
+        targets: overlay,
+        width: ['0%', '160%'],
+        duration: 600,
+        easing: 'easeOutQuad'
+      });
+      content.style.color = '#fff';
+      content2.style.color = '#fff';
+    }
+
+    function collapse(el) {
+      const overlay = el.querySelector('.skew-overlay');
+      const content = el.querySelector('.event-content');
+      const content2 = el.querySelector('.event-date');
+
+      anime({
+        targets: overlay,
+        translateX: '100%',
+        duration: 600,
+        easing: 'easeInOutQuad',
+        update: anim => {
+          overlay.style.transform = 'skewX(-20deg) translateX(' + anim.animations[0].currentValue + ')';
+        },
+        complete: () => {
+          anime({
+            targets: overlay,
+            width: '0%',
+            duration: 0,
+            easing: 'easeOutQuad',
+            complete: () => {
+              overlay.style.transform = 'skewX(-20deg)';
+              overlay.style.translate = '0';
+            }
+          });
+        }
+      });
+      content.style.color = '#000';
+      content2.style.color = 'var(--accent)';
+    }
+
+  window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 100) {
+    navbar.style.opacity = '1.35';
+  } else {
+    navbar.style.opacity = '1';
+  }
+});
+anime({
+  targets: '.navbar',
+  translateY: [-50, 0],
+  opacity: [0, 2],
+  easing: 'easeOutQuad',
+  duration: 800
+});
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+
+    const offsetTop = target.getBoundingClientRect().top + window.scrollY - 80; // trừ chiều cao navbar
+
+    anime({
+      targets: [document.documentElement, document.body],
+      scrollTop: offsetTop,
+      duration: 1600, // thời gian cuộn
+      easing: 'easeOutCubic' // bắt đầu chậm, nhanh dần
+    });
+  });
+});
+
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('mouseenter', () => {
+    anime({
+      targets: link,
+      translateX: [0, 6], // đẩy sang phải 6px
+      duration: 400,
+      easing: 'easeOutQuad'
+    });
+  });
+
+  link.addEventListener('mouseleave', () => {
+    anime({
+      targets: link,
+      translateX: [6, 0], // quay lại vị trí cũ
+      duration: 400,
+      easing: 'easeOutQuad'
+    });
+  });
+});
+
+    
+
+function animateOnScroll() {
+  const items = document.querySelectorAll('.tour-item');
+  const triggerBottom = window.innerHeight * 0.9;
+  items.forEach((item, index) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < triggerBottom && !item.classList.contains('animated')) {
+      item.classList.add('animated');
+      anime({
+        targets: item,
+        opacity: [0, 1],
+        translateY: [50, 0],
+        duration: 900,
+        delay: index * 200,
+        easing: 'easeOutExpo'
+      });
+    }
+  });
+}
+
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+
+
+    
+
+</script>
+
+</body>
+</html>

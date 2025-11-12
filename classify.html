@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phân loại Di tích Lịch sử Việt Nam | re-MERMORed</title>
+  <link rel="stylesheet" href="classify.css" />
+</head>
+<body>
+  <header id="top-bar">
+    <a href="index.html" class="home-link">
+      <img src="assets/1-trang.png" alt="re-MEMORed Logo" class="logo" id="logo" />
+    </a>
+    <h1>
+      <a href="index.html" class="title-link">Phân loại Di tích Lịch sử Việt Nam</a>
+    </h1>
+  </header>
+
+  <main>
+    <section class="filters">
+      <select id="filterTen">
+        <option value="">Tất cả di tích</option>
+      </select>
+
+      <input type="number" id="filterYearStart" placeholder="Năm bắt đầu" />
+      <input type="number" id="filterYearEnd" placeholder="Năm kết thúc" />
+
+      <select id="filterEra">
+        <option value="">Niên đại</option>
+        <option value="TCN">TCN</option>
+        <option value="SCN">SCN</option>
+      </select>
+
+      <select id="filterPeriod">
+        <option value="">Thời kỳ</option>
+      </select>
+
+      <select id="filterReligion">
+        <option value="">Tôn giáo</option>
+      </select>
+
+      <select id="filterLoai">
+        <option value="">Loại di sản</option>
+      </select>
+
+      <select id="filterTinh">
+        <option value="">Tỉnh / Thành</option>
+      </select>
+
+      <select id="filterUNESCO">
+        <option value="">Công nhận UNESCO</option>
+        <option value="Có">Đã được công nhận</option>
+        <option value="Không">Chưa được công nhận</option>
+      </select>
+
+      <select id="filterTinhTrang">
+        <option value="">Tình trạng bảo tồn</option>
+      </select>
+
+      <button id="filterBtn">Lọc</button>
+      <button id="resetBtn">🔄 Reset</button>
+    </section>
+
+    <section id="heritageContainer" class="table-container">
+      <table id="heritageTable">
+        <thead>
+          <tr>
+            <th>Tên di tích</th>
+            <th>Năm xuất hiện</th>
+            <th>Thời kỳ</th>
+            <th>Tôn giáo</th>
+            <th>Loại di sản</th>
+            <th>Tỉnh/Thành</th>
+            <th>Công nhận UNESCO</th>
+            <th>Tình trạng bảo tồn</th>
+            <th>Mô tả</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="classify.js"></script>
+</body>
+</html>

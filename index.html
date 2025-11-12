@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>re-MEMORed</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Thanh xuất hiện khi cuộn -->
+  <header id="top-bar">
+    <div class="bar-inner">
+      <div class="left-section">
+        <img src="assets/1-trang.png" alt="Logo re-MEMORed" class="bar-logo" />
+      </div>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Tìm wikipedia..." />
+        <button id="searchBtn">Tìm</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <div class="container">
+    <img src="assets/1-trang.png" alt="re-MEMORed Logo" class="logo" id="logo" />
+    <h1 id="title">Bảo tồn ký ức – Tái hiện văn hóa</h1>
+    <div class="neon-line" id="line"></div>
+    <p id="desc">Một dự án số hóa ký ức và di sản.</p>
+  </div>
+
+  <!-- Nội dung kéo xuống -->
+  <section class="content">
+    <p>Cuộn xuống để xem thanh tìm kiếm xuất hiện...</p>
+    <div style="height: 0vh;"></div>
+  </section>
+  
+
+
+
+
+  <!-- Modal hiển thị kết quả -->
+  <div id="result-modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h2 id="resultTitle"></h2>
+      <img id="resultImage" src="" alt="">
+      <p id="resultDesc"></p>
+    </div>
+  </div>
+
+
+  <div class="card-container">
+<a href="1.html">
+<div class="heritage-card" >
+  <div class="card-header" >
+    <h3>Đình Thông Tây Hội</h3>
+    <p class="type">Loại: Vật thể</p>
+  </div>
+
+  <div class="card-image">
+    <img src="assets/dtth0.jpg" alt="Đình Thông Tây Hội">
+    <div class="tech-overlay"></div>
+  </div>
+  <div class="card-info">
+    <p class="type">Ngôi đình cổ nhất Sài Gòn, lưu giữ nhiều giá trị văn hóa và lịch sử của vùng đất Gia Định xưa.</p>
+  </div>
+
+  <div class="card-footer">
+    <span>#001</span>
+    <span>X</span>
+  </div>
+</div>
+</a>
+<a href="">
+<div class="heritage-card" >
+  <div class="card-header" >
+    <h3>?</h3>
+    <p class="type">Loại: </p>
+  </div>
+
+  <div class="card-image">
+    <img src="assets/1.png" alt="Đình Thông Tây Hội">
+    <div class="tech-overlay"></div>
+  </div>
+  <div class="card-info">
+    <p class="type">.</p>
+  </div>
+
+  <div class="card-footer">
+    <span>#002</span>
+    <span>X</span>
+  </div>
+</div>
+</a>
+<a href="">
+<div class="heritage-card" >
+  <div class="card-header" >
+    <h3>?</h3>
+    <p class="type">Loại: </p>
+  </div>
+
+  <div class="card-image">
+    <img src="assets/1.png" alt="Đình Thông Tây Hội">
+    <div class="tech-overlay"></div>
+  </div>
+  <div class="card-info">
+    <p class="type">.</p>
+  </div>
+
+  <div class="card-footer">
+    <span>#003</span> <span>X</span>
+  </div>
+</div>
+</a>
+<a href="">
+<div class="heritage-card" >
+  <div class="card-header" >
+    <h3>?</h3>
+    <p class="type">Loại: </p>
+  </div>
+
+  <div class="card-image">
+    <img src="assets/1.png" alt="Đình Thông Tây Hội">
+    <div class="tech-overlay"></div>
+  </div>
+  <div class="card-info">
+    <p class="type">.</p>
+  </div>
+
+  <div class="card-footer">
+    <span>#004</span> <span>X</span>  
+  </div>
+</div>
+</a>
+
+</div>
+
+
+
+<section id="timeline-section">
+  <div  class="timeline-header">
+    <a href="classify.html"><h2 >Dòng Thời Gian Việt Nam</h2></a>
+    <button id="toggleMode">🕰️ Chuyển sang Sự kiện lịch sử</button>
+  </div>
+
+  <div id="timeline-container">
+    <div id="timeline"></div>
+  </div>
+
+  <div id="event-details" class="hidden">
+    <h3 id="period-title"></h3>
+    <ul id="event-list"></ul>
+  </div>
+</section>
+
+<footer class="credit-section">
+<div class="credit-divider"></div>
+<div class="credit-footer">© 2025 — reMEMORed Project | Designed & Animated with Animejs</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="timeline.js"></script>
+
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
